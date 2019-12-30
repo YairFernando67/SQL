@@ -53,7 +53,7 @@ In this project we'll cover basic SQL queries such as:
 
 ### Built With
 The project was developed using the following technologies:
-- [SQL](https://www.ruby-lang.org/es/)
+- [SQL](https://es.wikipedia.org/wiki/SQL)
 
 
 ## Contact
@@ -83,7 +83,7 @@ The project was developed using the following technologies:
 </p>
 
 ## Acknowledgements
-- [Microverse curriculum basic Ruby section](https://www.microverse.org/?grsf=6ns691)
+- [Microverse curriculum](https://www.microverse.org/?grsf=6ns691)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/YairFernando67/SQL.svg?style=flat-square
@@ -93,7 +93,7 @@ The project was developed using the following technologies:
 [stars-shield]: https://img.shields.io/github/stars/YairFernando67/SQL.svg?style=flat-square
 [stars-url]: https://github.com/YairFernando67/SQL/stargazers
 [issues-shield]: https://img.shields.io/github/issues/YairFernando67/SQL.svg?style=flat-square
-[issues-url]: hhttps://github.com/YairFernando67/SQL/issues
+[issues-url]: https://github.com/YairFernando67/SQL/issues
 [license-shield]: https://img.shields.io/github/license/YairFernando67/SQL.svg?style=flat-square
 [license-url]: https://github.com/YairFernando67/SQL/blob/master/LICENSE.txt
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
