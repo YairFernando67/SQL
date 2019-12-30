@@ -63,3 +63,49 @@ SELECT winner from nobel
 
 SELECT yr, subject, winner from nobel
   WHERE yr between 1980 and 1989 and subject = 'Literature'
+
+SELECT * FROM nobel
+ WHERE winner IN ('Theodore Roosevelt',
+                  'Woodrow Wilson',
+                  'Jimmy Carter',
+                  'Barack Obama')
+          
+SELECT winner from nobel
+  WHERE winner LIKE 'John%'
+
+SELECT yr, subject, winner from nobel
+  WHERE subject = 'Physics' and yr = 1980 or subject = 'Chemistry' and yr = 1984
+
+SELECT yr, subject, winner from nobel
+  WHERE yr = 1980 and subject not in ('Chemistry','Medicine')
+
+SELECT yr, subject, winner from nobel
+  WHERE subject = 'Medicine' and yr < 1910 or subject = 'Literature' and yr >= 2004
+
+SELECT * FROM nobel where winner = 'PETER GRÜNBERG'
+
+SELECT * FROM nobel where winner = "EUGENE O\'NEILL"
+
+SELECT winner, yr, subject FROM nobel where winner like 'Sir%'
+
+SELECT winner, subject FROM nobel
+  WHERE yr=1984 ORDER BY subject IN ('Physics','Chemistry'),subject,winner
+
+SELECT name FROM world
+  WHERE population >
+     (SELECT population FROM world
+      WHERE name='Russia')
+
+SELECT name from world
+  where continent = 'Europe' and gdp/population > (select gdp/population from world where name = 'United Kingdom')
+
+SELECT name, continent from world
+  where continent in (select continent from world where name in ('Argentina','Australia')) order by name
+
+SELECT name, population from world
+  WHERE population > (SELECT population from world WHERE name = 'Canada') and population < (SELECT population FROM world WHERE name = 'Poland')
+
+SELECT name, CONCAT(ROUND(100*population/(SELECT population 
+                              FROM world 
+                              WHERE name = 'Germany')), '%')
+  FROM world WHERE continent = 'Europe'
