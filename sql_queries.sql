@@ -149,3 +149,51 @@ SELECT continent, COUNT(name) from world
 
 SELECT DISTINCT continent from world
   GROUP BY continent HAVING SUM(population) >= 100000000
+
+SELECT matchid, player FROM goal 
+  WHERE teamid = 'GER'
+
+SELECT id,stadium,team1,team2
+  FROM game WHERE id = 1012
+
+SELECT player, teamid,stadium, mdate
+  FROM game JOIN goal ON (id=matchid) WHERE teamid = 'GER'
+
+SELECT team1, team2, player from game JOIN goal ON (id=matchid) where player LIKE '%Mario%'
+
+SELECT player, teamid, coach, gtime
+  FROM goal JOIN eteam on teamid = id
+ WHERE gtime<=10
+
+SELECT mdate, teamname from game
+  JOIN eteam on game.team1 = eteam.id
+  where coach = 'Fernando Santos'
+
+SELECT player from goal
+  JOIN game on goal.matchid = game.id
+    WHERE stadium = 'National Stadium, Warsaw'
+
+SELECT DISTINCT player
+  FROM game JOIN goal ON matchid = id 
+    WHERE (teamid!='GER' AND (team1='GER' OR team2='GER'))
+
+SELECT teamname, COUNT(matchid)
+  FROM eteam JOIN goal ON id=teamid
+    GROUP BY teamna
+
+SELECT stadium, COUNT(matchid) from game
+  JOIN goal on id=matchid GROUP BY stadium
+
+SELECT matchid,mdate,COUNT(player)
+  FROM game JOIN goal ON (matchid = id AND (team1 = 'POL' OR team2='POL')) GROUP BY matchid,mdate
+
+SELECT id, mdate, COUNT(player) from game
+  JOIN goal on (id=matchid AND (team1= 'GER' OR team2='GER') AND teamid = 'GER')
+    GROUP BY Id, mdate
+
+SELECT mdate,
+  team1, SUM(CASE WHEN teamid = team1 THEN 1 ELSE 0 END) as score1, 
+  team2, 
+  SUM(CASE WHEN teamid = team2 THEN 1 ELSE 0 END)as score2
+  FROM game LEFT JOIN goal ON matchid = id
+  GROUP BY mdate, team1, team2 ORDER BY mdate, matchid
