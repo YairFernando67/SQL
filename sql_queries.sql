@@ -197,3 +197,26 @@ SELECT mdate,
   SUM(CASE WHEN teamid = team2 THEN 1 ELSE 0 END)as score2
   FROM game LEFT JOIN goal ON matchid = id
   GROUP BY mdate, team1, team2 ORDER BY mdate, matchid
+
+SELECT id, title
+ FROM movie
+ WHERE yr=1962
+
+SELECT yr from movie where title = 'Citizen Kane'
+
+SELECT id, title, yr from movie
+  WHERE title like '%Star Trek%' order by yr
+
+SELECT id from actor WHERE name = 'Glenn Close'
+
+SELECT id from movie WHERE title = 'Casablanca'
+
+SELECT name from movie m
+  join casting c on m.id=c.movieid
+  join actor a on c.actorid=a.id
+  where movieid=11768
+
+SELECT name from movie m
+  join casting c on m.id=c.movieid
+  join actor a on c.actorid=a.id
+  where title='Alien'
