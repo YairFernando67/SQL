@@ -220,3 +220,49 @@ SELECT name from movie m
   join casting c on m.id=c.movieid
   join actor a on c.actorid=a.id
   where title='Alien'
+
+SELECT m.title from movie m
+  join casting c on m.id=c.movieid
+  join actor a on c.actorid=a.id
+  where a.name='Harrison Ford'
+
+SELECT title from movie
+  JOIN casting on (id=movieid AND actorid = (SELECT id from actor WHERE name = 'Harrison Ford') AND ord != 1)
+
+SELECT title, name from movie m
+  join casting c on m.id=c.movieid
+  join actor a on c.actorid =a.id
+    WHERE ord=1 AND yr=1962
+
+SELECT yr,COUNT(title) FROM
+  movie JOIN casting ON movie.id=movieid
+        JOIN actor   ON actorid=actor.id
+WHERE name='Rock Hudson'
+GROUP BY yr
+HAVING COUNT(title) > 2
+
+SELECT title,name 
+  from movie 
+  JOIN casting ON (movieid=movie.id AND ord=1)
+  JOIN actor ON (actorid=actor.id)
+    WHERE movie.id in 
+      (SELECT movieid FROM casting WHERE actorid IN 
+        (SELECT id FROM actor WHERE name='Julie Andrews'))
+
+SELECT name from actor
+  JOIN casting on (id = actorid AND (SELECT COUNT(ord) FROM casting 
+    WHERE actorid = actor.id AND ord = 1)>=30) group by name
+
+SELECT title, COUNT(actorid) as cast
+  FROM movie JOIN casting on id=movieid
+  WHERE yr = 1978
+    GROUP BY title
+    ORDER BY cast DESC, title
+
+SELECT name from actor
+  join casting on id=actorid
+  join movie m on movieid=m.id
+    where title in (SELECT title from actor 
+      join casting on id=actorid
+      join movie m on movieid=m.id
+      where name='Art Garfunkel') and name != 'Art Garfunkel'
