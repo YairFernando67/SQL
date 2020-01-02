@@ -285,3 +285,23 @@ SELECT teacher.name, dept.name
 SELECT name
       ,COALESCE(mobile, '07986 444 2266')
   FROM teacher
+
+SELECT teacher.name, COALESCE(dept.name, 'None') from teacher
+  left join dept on teacher.dept=dept.id
+
+SELECT COUNT(name), COUNT(mobile) from teacher
+
+SELECT dept.name, COUNT(teacher.name)
+  FROM teacher right join dept on teacher.dept=dept.id
+    GROUP by dept.name
+
+SELECT teacher.name, CASE WHEN dept.id=1 THEN 'Sci'
+                          WHEN dept.id=2 THEN 'Sci' ELSE 'Art' END from teacher
+  LEFT JOIN dept on teacher.dept=dept.id
+
+SELECT teacher.name, CASE WHEN dept.id=1 THEN 'Sci'
+                          WHEN dept.id=3 THEN 'Art'
+                          WHEN dept.id=2 THEN 'Sci' ELSE 'None' END from teacher
+  LEFT JOIN dept on teacher.dept=dept.id
+
+SELECT COUNT(id) from stops
