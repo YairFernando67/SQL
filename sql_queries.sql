@@ -266,3 +266,22 @@ SELECT name from actor
       join casting on id=actorid
       join movie m on movieid=m.id
       where name='Art Garfunkel') and name != 'Art Garfunkel'
+
+SELECT name from teacher
+  WHERE dept IS NULL
+
+SELECT teacher.name, dept.name
+ FROM teacher INNER JOIN dept
+           ON (teacher.dept=dept.id)
+
+SELECT teacher.name, dept.name
+  FROM teacher LEFT JOIN dept
+    ON (teacher.dept=dept.id)
+
+SELECT teacher.name, dept.name
+  FROM dept LEFT JOIN teacher
+    ON (dept.id=teacher.dept)
+
+SELECT name
+      ,COALESCE(mobile, '07986 444 2266')
+  FROM teacher
