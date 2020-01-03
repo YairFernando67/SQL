@@ -66,7 +66,15 @@ The project was developed using the following technologies:
 <p align="center">
 
   Yair Fernando Facio - [YairFernando67](https://github.com/YairFernando67)
+
+  <a href="https://yairfernando67.github.io/Portfolio/" target="_blank">
+  
+  ![Screenshot Image](img/logo.jpg) 
+  
+  </a>
+
 </p>
+
 <p align="center" style="display: flex; justify-content: center; align-items: center;">
     <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=yair.facio11@gmail.com">
       yair.facio11@gmail.com
