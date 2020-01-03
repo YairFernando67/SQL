@@ -305,3 +305,52 @@ SELECT teacher.name, CASE WHEN dept.id=1 THEN 'Sci'
   LEFT JOIN dept on teacher.dept=dept.id
 
 SELECT COUNT(id) from stops
+
+SELECT id from stops 
+  WHERE name = 'Craiglockhart'
+
+SELECT id, name from stops 
+  JOIN route on id=stop WHERE company='LRT' and num='4'
+
+SELECT company, num, COUNT(*)as visits
+  FROM route WHERE stop=149 OR stop=53
+  GROUP BY company, num
+  HAVING visits=2
+
+SELECT a.company, a.num, a.stop, b.stop
+  FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  WHERE a.stop=53 and b.stop=149
+
+SELECT a.company, a.num, stopa.name, stopb.name
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' and stopb.name='London Road'
+
+SELECT DISTINCT a.company, a.num FROM route a JOIN route b ON
+  (a.company =b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Haymarket' AND stopb.name='Leith'
+
+SELECT DISTINCT a.company, a.num
+FROM route a
+  JOIN route b ON (a.num=b.num AND a.company=b.company)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name = 'Craiglockhart' AND stopb.name = 'Tollcross'
+
+SELECT stopa.name, a.company, a.num
+FROM route a
+  JOIN route b ON (a.num=b.num AND a.company=b.company)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopb.name = 'Craiglockhart'
+
+SELECT a.company, a.num, stopa.name, stopb.name
+FROM route a JOIN route b ON (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Tollcross';
